@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "hbzmhFM+JctoZVWxWfdPOgjsfa3UHKgWQ05XSyVRF2c=",
+  "Source": "ServiceAnalyzer",
+  "BasePath": "_content/ServiceAnalyzer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
