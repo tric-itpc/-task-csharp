@@ -16,7 +16,13 @@ namespace MyAPI.Data
         /// <param name="service"></param>
         public void AddService(Service service) =>
             _ctx.Services.Add(service);
-
+            
+        /// <summary>
+        /// Получение информации о конкретном сервисе
+        /// </summary>
+        public Service GetService(int id) =>
+            return _ctx.Services.FirstOrDefault(p => p.Id == id);
+        
         /// <summary>
         /// Метод для API
         /// </summary>
