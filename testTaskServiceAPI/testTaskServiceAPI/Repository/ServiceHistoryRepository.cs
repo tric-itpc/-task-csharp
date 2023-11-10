@@ -15,9 +15,21 @@ namespace testTaskServiceAPI.Repository
             set = db.Set<ServiceHistoryDomain>();
         }
 
-        public IEnumerable<ServiceHistoryDomain> GetAll() 
+        public IEnumerable<ServiceHistoryDomain> GetHistoryByName(string name) 
         {
-            return set;
+            var history = set
+                .Include(x => x.Service)
+                .Where(x => x.Service.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+            return history;
+        }
+
+        public IEnumerable<ServiceHistoryDomain> GetHistoryByDate(DateTime dateStart, DateTime dateEnd, string name)
+        {
+            var history = set
+                .Include(x => x.Service)
+                .Where(x => x.DateTime >= dateStart && x.DateTime <= dateEnd)
+                .Where(x => x.Service.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+            return history;
         }
     }
 }

@@ -10,8 +10,8 @@ namespace testTaskServiceAPI.Models
         {
             this.CreateMap<ServiceDomain, ServiceView>();
             this.CreateMap<ServiceView, ServiceDomain>();
-            this.CreateMap<ServiceHistoryDomain, ServiceHistoryView>();
-            this.CreateMap<ServiceHistoryView, ServiceHistoryDomain>();
+            this.CreateMap<ServiceHistoryDomain, ServiceHistoryView>()
+                .ForMember(x => x.ServiceName, x => x.MapFrom(src => src.Service.Name));
         }
     }
 }

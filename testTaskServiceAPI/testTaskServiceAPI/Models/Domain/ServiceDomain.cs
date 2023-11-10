@@ -9,6 +9,14 @@
 
         public ServiceDomain() { }
 
+        public ServiceDomain(int id, string name, State state, string description)
+        {
+            Id = id;
+            Name = name;
+            State = state;
+            Description = description;
+        }
+
         public void Update(ServiceDomain service)
         {
             Name = service.Name;

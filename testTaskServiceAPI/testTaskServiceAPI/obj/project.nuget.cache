@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0edoeJyBUKqZPu34t8xEgHbtbN7XJ4WOzsbYyDKvSeJnJ4DCw6WZkgtg+u/5yp7Qfy9JH3J9PMxFtMMlx6seKw==",
+  "dgSpecHash": "agCaO+xRqSG1A++P8vP5P/pNL//35OvoG7cUEMqXxItTa4i2gwlszsAIuMstR681fTT8cLxo92wlCvmgzFfWWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mikhail\\Documents\\GitHub\\task-csharp\\testTaskServiceAPI\\testTaskServiceAPI\\testTaskServiceAPI.csproj",
   "expectedPackageFiles": [
@@ -20,7 +20,11 @@
     "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Mikhail\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\Mikhail\\.nuget\\packages\\nunit\\3.14.0\\nunit.3.14.0.nupkg.sha512",
+    "C:\\Users\\Mikhail\\.nuget\\packages\\nunit3testadapter\\4.5.0\\nunit3testadapter.4.5.0.nupkg.sha512",
     "C:\\Users\\Mikhail\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Mikhail\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\Mikhail\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

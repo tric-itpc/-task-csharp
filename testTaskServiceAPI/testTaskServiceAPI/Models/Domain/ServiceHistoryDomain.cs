@@ -22,6 +22,7 @@
         {
             ServiceId = service.Id;
             StateNew = service.State;
+            StateOld = State.Working;
             DateTime = DateTime.Now;
         }
     }

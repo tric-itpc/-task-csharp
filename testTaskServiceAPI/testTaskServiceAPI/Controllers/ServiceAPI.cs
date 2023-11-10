@@ -28,6 +28,9 @@ namespace testTaskServiceAPI.Controllers
         [HttpPost("AddServiceState")]
         public IActionResult AddServiceState(ServiceView serviceView)
         {
+            if (((int)serviceView.State) >= 3 || ((int)serviceView.State) < 0)
+                return BadRequest("Не верно указано состояние сервиса");
+
             var service = _mapper.Map<ServiceView, ServiceDomain>(serviceView);
             if (!_serviceRepository.Contains(service))
             {
@@ -48,15 +51,58 @@ namespace testTaskServiceAPI.Controllers
         [HttpGet("GetAllServices")]
         public IActionResult GetAllServices()
         {
-            var services = _serviceRepository.GetAll();
+            var servicesDomain = _serviceRepository.GetAll();
+            var services = new List<ServiceView>();
+            foreach (var service in servicesDomain)
+            {
+                var serviceView = _mapper.Map<ServiceDomain, ServiceView>(service);
+                services.Add(serviceView);
+            }
             return Ok(services);
         }
 
-        [HttpGet("GetAllServicesHistory")]
-        public IActionResult GetAllServicesHistory()
+        [HttpGet("GetServiceHistory")]
+        public IActionResult GetAllServicesHistory(string name)
         {
-            var services = _serviceHistoryRepository.GetAll();
-            return Ok(services);
+            var servicesHistoryDomain = _serviceHistoryRepository.GetHistoryByName(name);
+            var serviceHistory = new List<ServiceHistoryView>();
+            foreach (var serviceHistoryDomain in servicesHistoryDomain)
+            {
+                var serviceHistoryView = _mapper.Map<ServiceHistoryDomain, ServiceHistoryView>(serviceHistoryDomain);
+                serviceHistory.Add(serviceHistoryView);
+            }
+            return Ok(serviceHistory);
+        }
+
+        [HttpGet("GetSLA")]
+        public IActionResult GetSLA(DateTime startDate, DateTime endDate, string name)
+        {
+            var span = endDate - startDate;
+            var spanNotWorked = CalculateSpanNotWorked(startDate, endDate, name);
+            var sla = ((span.TotalMinutes - spanNotWorked.TotalMinutes) / span.TotalMinutes) * 100;
+            sla = Math.Round(sla, 3);
+            var result = new
+            {
+                NotWorkedInMinutes = spanNotWorked.TotalMinutes,
+                SLA = sla
+            };
+            return Ok(result);
+        }
+
+        private TimeSpan CalculateSpanNotWorked(DateTime startDate, DateTime endDate, string name)
+        {
+            var currentDate = startDate;
+            var histories = _serviceHistoryRepository.GetHistoryByDate(startDate, endDate, name);
+            var timeSpan = new TimeSpan();
+            foreach (var history in histories)
+            {
+                if(history.StateOld == State.NotWorking)
+                    timeSpan += history.DateTime - currentDate;
+                currentDate = history.DateTime;
+            }
+            if (histories.Count() != 0 && histories.Last().StateNew == State.NotWorking)
+                timeSpan += histories.Last().DateTime - currentDate;
+            return timeSpan;
         }
     }
 }
